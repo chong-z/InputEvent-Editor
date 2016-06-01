@@ -1,0 +1,26 @@
+#left {
+    width: 45%;
+    float: left;
+}
+
+#right {
+    width: 45%;
+    float: right;
+}
+
+#bottom {
+    padding-top: 20px;
+    clear: both;
+}
+
+#editor {
+    border: 2px solid #73AD21;
+}
+
+#HTMLLog {
+    border: 2px solid #73AD21;
+}
+
+#eventLog {
+    border: 2px solid #73AD21;
+}
