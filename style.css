@@ -24,3 +24,38 @@
 #eventLog {
     border: 2px solid #73AD21;
 }
+
+
+/* Logger Style */
+.type, .inputtype {
+  font-weight: bold;
+  display: inline-block;
+  width: 7em;
+}
+
+.data {
+  font-weight: bold;
+  display: inline-block;
+  width: 10em;
+}
+
+.is-composing {
+  font-weight: bold;
+  display: inline-block;
+  width: 5em;
+}
+
+.log-counter {
+  font-weight: bold;
+  display: inline-block;
+  width: 2em;
+}
+
+.type-beforeinput {
+  color: green;
+}
+
+.type-input {
+  color: blue;
+}
+
