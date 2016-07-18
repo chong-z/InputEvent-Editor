@@ -54,6 +54,11 @@
         refreshHTMLLog();
     });
 
+    document.getElementById('btn-clear-log').addEventListener('click', () => {
+        eventLog.innerHTML = '';
+        logCounter = 1;
+    });
+
     // Start.
     refreshHTMLLog();
 })();

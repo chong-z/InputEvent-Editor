@@ -27,10 +27,16 @@
 
 
 /* Logger Style */
-.type, .inputtype {
+.type {
   font-weight: bold;
   display: inline-block;
   width: 7em;
+}
+
+.inputtype {
+  font-weight: bold;
+  display: inline-block;
+  width: 13em;
 }
 
 .data {
