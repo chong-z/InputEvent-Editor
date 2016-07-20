@@ -26,11 +26,17 @@
 }
 
 
-/* Logger Style */
+/* General Logger Style */
+.prefix {
+  font-weight: bold;
+  display: inline-block;
+  width: 9em;
+}
+
 .type {
   font-weight: bold;
   display: inline-block;
-  width: 7em;
+  width: 13em;
 }
 
 .inputtype {
@@ -57,11 +63,25 @@
   width: 2em;
 }
 
+/* Specific Type Style */
+
+.prefix-inputevent {
+  color: blue;
+}
+
+.prefix-compositionevent {
+  color: lightslategray;
+}
+
 .type-beforeinput {
   color: green;
 }
 
 .type-input {
   color: blue;
+}
+
+.type-compositionstart, .type-compositionupdate, .type-compositionend {
+  color: black;
 }
 

@@ -29,7 +29,15 @@
         }
         rangeStr = `getRanges():[${rangeStr}]`;
 
-        const eventStr = `InputEvent - ${typeStr} ${inputTypeStr} ${dataStr} ${isComposingStr} ${rangeStr}`;
+        const eventStr = `<span class="prefix prefix-inputevent">InputEvent</span> - ${typeStr} ${inputTypeStr} ${dataStr} ${isComposingStr} ${rangeStr}`;
+        return eventStr;
+    }
+
+    function compositionEventToString(event) {
+        const typeStr = `type:<span class="type type-${event.type}">${event.type}</span>`;
+        const dataStr = `data:<span class="data">"${event.data}"</span>`;
+
+        const eventStr = `<span class="prefix prefix-compositionevent">CompositionEvent</span> - ${typeStr} ${dataStr}`;
         return eventStr;
     }
 
@@ -53,6 +61,13 @@
         appendLog(inputEventToString(event));
         refreshHTMLLog();
     });
+
+    ['compositionstart', 'compositionupdate', 'compositionend'].forEach( name => {
+        document.addEventListener(name, event => {
+            console.log(event);
+            appendLog(compositionEventToString(event));
+        });
+    })
 
     document.getElementById('btn-clear-log').addEventListener('click', () => {
         eventLog.innerHTML = '';
