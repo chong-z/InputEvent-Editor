@@ -18,7 +18,16 @@
     function inputEventToString(event) {
         const typeStr = `type:<span class="type type-${event.type}">${event.type}</span>`;
         const inputTypeStr = `inputType:<span class="inputtype">${event.inputType}</span>`;
-        const dataStr = `data:<span class="data">"${event.data}"</span>`;
+        var dataStr;
+        if (event.dataTransfer) {
+            const items = event.dataTransfer.items;
+            dataStr = 'dataTransfer:';
+            for (var i = 0; i < items.length; ++i) {
+                dataStr += `"${items[i].type}"="${escapeHTML(event.dataTransfer.getData(items[i].type))}" `;
+            }
+        } else {
+            dataStr = `data:<span class="data">"${escapeHTML(event.data)}"</span>`;
+        }
         const isComposingStr = `isComposing:<span class="is-composing">${event.isComposing}</span>`;
         // Ranges.
         const ranges = event.getRanges();
