@@ -16,6 +16,7 @@
     }
 
     function inputEventToString(event) {
+        const targetTag = `target:<span class="target target-${event.target.tagName}">${event.target.tagName}</span>`;
         const typeStr = `type:<span class="type type-${event.type}">${event.type}</span>`;
         const inputTypeStr = `inputType:<span class="inputtype">${event.inputType}</span>`;
         var dataStr;
@@ -38,7 +39,7 @@
         }
         rangeStr = `getRanges():[${rangeStr}]`;
 
-        const eventStr = `<span class="prefix prefix-inputevent">InputEvent</span> - ${typeStr} ${inputTypeStr} ${dataStr} ${isComposingStr} ${rangeStr}`;
+        const eventStr = `<span class="prefix prefix-inputevent">InputEvent</span> - ${targetTag} - ${typeStr} ${inputTypeStr} ${dataStr} ${isComposingStr} ${rangeStr}`;
         return eventStr;
     }
 

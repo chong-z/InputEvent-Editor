@@ -25,6 +25,10 @@
     border: 2px solid #73AD21;
 }
 
+img {
+  width: 200px;
+}
+
 
 /* General Logger Style */
 .prefix {
@@ -37,6 +41,12 @@
   font-weight: bold;
   display: inline-block;
   width: 13em;
+}
+
+.target {
+  font-weight: bold;
+  display: inline-block;
+  width: 6em;
 }
 
 .inputtype {
