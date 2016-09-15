@@ -7,6 +7,8 @@
 
     // Methods.
     function escapeHTML(html) {
+        if (!html)
+            return html;
         return html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 
@@ -19,25 +21,26 @@
         const targetTag = `target:<span class="target target-${event.target.tagName}">${event.target.tagName}</span>`;
         const typeStr = `type:<span class="type type-${event.type}">${event.type}</span>`;
         const inputTypeStr = `inputType:<span class="inputtype">${event.inputType}</span>`;
-        var dataStr;
-        if (event.dataTransfer) {
+        var dataStr = event.data === null ? "<b>data:</b>null " : `<b>data:</b>"${escapeHTML(event.data)}" `;
+        if (event.dataTransfer === null) {
+            dataStr += '<b>dataTransfer:</b>null ';
+        } else {
             const items = event.dataTransfer.items;
-            dataStr = 'dataTransfer:';
+            dataStr += '<b>dataTransfer:</b>';
             for (var i = 0; i < items.length; ++i) {
                 dataStr += `"${items[i].type}"="${escapeHTML(event.dataTransfer.getData(items[i].type))}" `;
             }
-        } else {
-            dataStr = `data:<span class="data">"${escapeHTML(event.data)}"</span>`;
         }
+        dataStr = `<span class="data">${dataStr}</span>`;
         const isComposingStr = `isComposing:<span class="is-composing">${event.isComposing}</span>`;
         // Ranges.
-        const ranges = event.getRanges();
+        const ranges = event.getTargetRanges();
         var rangeStr = '';
         for (var i = 0; i < ranges.length; ++i) {
             const range = ranges[i];
             rangeStr += `("${range.startContainer.textContent}":${range.startOffset}, "${range.endContainer.textContent}":${range.endOffset}), `;
         }
-        rangeStr = `getRanges():[${rangeStr}]`;
+        rangeStr = `getTargetRanges():[${rangeStr}]`;
 
         const eventStr = `<span class="prefix prefix-inputevent">InputEvent</span> - ${targetTag} - ${typeStr} ${inputTypeStr} ${dataStr} ${isComposingStr} ${rangeStr}`;
         return eventStr;
