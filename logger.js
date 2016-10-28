@@ -60,7 +60,7 @@
     }
 
     function refreshHTMLLog() {
-        HTMLLog.innerHTML = escapeHTML(editor.innerHTML);
+        HTMLLog.innerHTML = escapeHTML(editor1.innerHTML);
     }
 
     // Event listeners.
